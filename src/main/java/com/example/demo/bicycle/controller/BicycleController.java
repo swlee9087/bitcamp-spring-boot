@@ -6,9 +6,9 @@ import java.util.Scanner;
 //state (current gear, current pedal cadence, current speed) and behavior (changing gear, changing pedal cadence, applying brakes)
 
 public class BicycleController {
-    public static void main(String[] args){
-        Scanner scanner = new Scanner(System.in);
-        BicycleDTO bicycleDTO = new BicycleDTO();
+    Scanner scanner = new Scanner(System.in);
+    BicycleDTO bicycleDTO = new BicycleDTO();
+    public void bicycle(){
         System.out.println("current gear?");
         bicycleDTO.setGear(scanner.next());
         System.out.println("current pedal cadence");

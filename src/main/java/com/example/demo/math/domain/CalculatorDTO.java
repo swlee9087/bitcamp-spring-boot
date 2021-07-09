@@ -24,8 +24,5 @@ public class CalculatorDTO { //x main method
         return this.opcode;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%d + %d = %d", num1, num2, num1+num2);
-    }
+    
 }

@@ -5,9 +5,10 @@ import com.example.demo.dog.domain.DogDTO;
 import java.util.Scanner;
 
 public class DogController {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in); //연습하기!
-        DogDTO dogDTO = new DogDTO(); //instance; Dog 리얼객체, dog 가상객체.
+    Scanner scanner = new Scanner(System.in);
+    DogDTO dogDTO = new DogDTO();
+
+    public void dog(){
         System.out.println("name?");
         dogDTO.setName(scanner.next()); //Dog class에 저장. --> obj 본다/지향한다.
         System.out.println("color");
