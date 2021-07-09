@@ -11,4 +11,8 @@ public interface CalculatorService { //기능 only
     int divide(CalculatorDTO calculator);
     int remainder(CalculatorDTO calculator);
 
+    int[] sequence(CalculatorDTO calculator); //수열 생성. num1=1 <시작값>, num2=10
+
+//    int[] sequence2(CalculatorDTO calculator);
+
 }
