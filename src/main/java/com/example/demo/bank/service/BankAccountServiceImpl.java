@@ -2,9 +2,52 @@ package com.example.demo.bank.service;
 
 import com.example.demo.bank.domain.BankAccountDTO;
 
+import java.util.Random;
+
 //3
 public class BankAccountServiceImpl implements BankAccountService{
-    BankAccountDTO bankAccount = new BankAccountDTO(); //BADTO에 대한 instc bA 생성 ==> 인스턴스변수.
+    private BankAccountDTO bankAccount;
+
+    @Override
+    public void createAccount(BankAccountDTO bank) { //이름 입력시 계좌 생성
+        bankAccount=new BankAccountDTO();
+
+        String randomNumber = "";
+        Random random=new Random(12);
+        int upperbound = 9999;
+        int int_random= random.nextInt(upperbound);
+        for(int i=0;i<=9;i++)
+            System.out.println(random.nextInt()+random.nextInt()+random.nextInt());
+
+        bankAccount.setAccNumber(randomNumber);
+        bankAccount.setName(bank.getName());
+
+    }
+
+    @Override
+    public int findBalance(BankAccountDTO bank) { //이름 금액 계번 입력후 잔액 확인하면 잔액 보임
+        return bankAccount.getMoney();
+    }
+
+    @Override
+    public int deposit(BankAccountDTO bank) { //이름 금액 계번 입력후 입금후 잔액 확인
+        int restMoney=bankAccount.getMoney();
+        bankAccount.setMoney(restMoney + bank.getMoney());
+        return bankAccount.getMoney();
+    }
+
+    @Override
+    public int withdraw(BankAccountDTO bank) { //이름 금액 계번 입력후 출금후 잔액 확인
+        int drawMoney=bankAccount.getMoney();
+        bankAccount.setMoney(bank.getMoney() - drawMoney);
+        return bankAccount.getMoney();
+    }
+
+    @Override
+    public void dropAccount(BankAccountDTO bank) { //이름 계번 입력후 계좌해지
+
+    }
+
 
 
      /*int balance =0;

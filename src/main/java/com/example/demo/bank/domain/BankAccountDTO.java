@@ -9,6 +9,7 @@ public class BankAccountDTO {
     private String name; //"name"=invisible instcVar공간
     private String accNumber; //info factor
     private int money;
+    private int balance;
     public static final String BANK_NAME = "BeatBank"; //assign val in classVar to init as constant(syntax)
     private String date; //
     private float interest;

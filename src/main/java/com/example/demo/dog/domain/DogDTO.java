@@ -5,7 +5,6 @@ package com.example.demo.dog.domain;
 
 import lombok.Data;
 
-import java.util.Scanner;
 @Data
 public class DogDTO {
     private String name;
@@ -13,6 +12,10 @@ public class DogDTO {
     private String breed;
     private String hungry;
     //primitive String
+    @Override
+    public String toString(){
+        return String.format("dog name %s, color %s, breed %s, hunger %s.", name, color, breed, hungry);
+    }
 
 
 }

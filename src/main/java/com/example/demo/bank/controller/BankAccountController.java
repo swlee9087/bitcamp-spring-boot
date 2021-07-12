@@ -1,13 +1,50 @@
 package com.example.demo.bank.controller;
 
 import com.example.demo.bank.domain.BankAccountDTO;
+import com.example.demo.bank.service.BankAccountService;
+import com.example.demo.bank.service.BankAccountServiceImpl;
 
 import java.util.Scanner;
 //4
 public class BankAccountController {
-    public static void main(String[] args){
-        Scanner scanner = new Scanner(System.in);
-        BankAccountDTO bankAccountDTO = new BankAccountDTO();
+    private Scanner scanner;
+    private BankAccountService bankAccountService;
+    private BankAccountDTO bankAccount;
+
+    public BankAccountController(){
+        this.bankAccountService=new BankAccountServiceImpl();
+        this.bankAccount=new BankAccountDTO();
+        this.scanner=new Scanner(System.in);
+    }
+    public void main() {
+        System.out.println("name?");
+        bankAccount.setName(scanner.next()); //create random num string for acctnum
+        while (true) {
+            System.out.print("\n[menu] 0.check balance 1.deposit 2.withdraw 3.close account 4.logout");//create options to depo or withdr or close
+            switch (scanner.next()) {
+                case "0":
+                    System.out.println("check balance?");
+                    bankAccount.getMoney();
+                    break;
+                case "1":
+                    System.out.println("deposit?");
+                    bankAccount.setMoney(scanner.nextInt());
+                    System.out.println("balance : " + bankAccount.getMoney());
+                    break;
+                case "2":
+                    System.out.println("withdraw?");
+                    bankAccount.setMoney(scanner.nextInt());
+                    System.out.println("balance : " + bankAccount.getMoney());
+                    break;
+                case "3":
+                    System.out.println("close account?");
+                    bankAccount.getName();
+                    break;
+                case"4":
+                    System.out.println("log out?");
+            }
+        }
+
 
         /*System.out.println("계좌번호 : ");
         bankAccountDTO.setAccNumber(scanner.next());
@@ -26,4 +63,4 @@ public class BankAccountController {
         park.checkMyBalance();*/
 
     }
-}
+    }
