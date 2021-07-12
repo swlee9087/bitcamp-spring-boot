@@ -3,13 +3,13 @@ package com.example.demo.bank.controller;
 import com.example.demo.bank.domain.BankAccountDTO;
 
 import java.util.Scanner;
-
+//4
 public class BankAccountController {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         BankAccountDTO bankAccountDTO = new BankAccountDTO();
 
-        System.out.println("계좌번호 : ");
+        /*System.out.println("계좌번호 : ");
         bankAccountDTO.setAccNumber(scanner.next());
         System.out.println("주민번호 : ");
         bankAccountDTO.setName(scanner.next());

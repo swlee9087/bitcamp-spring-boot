@@ -1,6 +1,8 @@
 package com.example.demo.dog.controller;
 
 import com.example.demo.dog.domain.DogDTO;
+import com.example.demo.dog.service.DogService;
+import com.example.demo.dog.service.DogServiceImpl;
 
 import java.util.Scanner;
 
@@ -8,7 +10,16 @@ public class DogController {
     Scanner scanner = new Scanner(System.in);
     DogDTO dogDTO = new DogDTO();
 
-    public void dog(){
+
+    private DogService dogService;
+    private DogDTO dog;
+
+    public DogController(){
+        this.dogService = new DogServiceImpl();
+        this.dog=new DogDTO();
+        this.scanner=new Scanner(System.in);
+    }
+    public void main(){
         System.out.println("name?");
         dogDTO.setName(scanner.next()); //Dog class에 저장. --> obj 본다/지향한다.
         System.out.println("color");

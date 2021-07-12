@@ -1,56 +1,30 @@
 package com.example.demo.bank.domain;
 
+import lombok.Data;
+
+//1
+@Data
+
 public class BankAccountDTO {
+    private String name; //"name"=invisible instcVar공간
     private String accNumber; //info factor
-    private String name;
+    private int money;
+    public static final String BANK_NAME = "BeatBank"; //assign val in classVar to init as constant(syntax)
+    private String date; //
+    private float interest;
+    //var and constant defined
 
-
-    public void setAccNumber(String accNumber) {
-        this.accNumber = accNumber;
-    }
-    public String getAccNumber() {
-        return this.accNumber;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getName() {
-        return this.name;
-    }
-
-
-    @Override
-    public String toString() {
-        return String.format("%d 고객님의 %d 계좌가 존재합니다.", name, accNumber);
-    }
-
-    /*
-
-
-    public BankAccount(String acc, String ss, int bal) {
-        accNumber = acc;
-        ssNumber = ss;
-        balance = bal;
-    }
-
-    public int deposit(int amount) {
-        balance += amount;
-        return balance;
-    }
-
-    public int withdraw(int amount) {
-        balance -= amount;
-        return balance;
-    }
-
-    public int checkMyBalance() {
-        System.out.println("acct num : " + accNumber);
-        System.out.println("sosec num : " + ssNumber);
-        System.out.println("balance : " + balance + '\n'); //printf = overloading
-        return balance;
-    }
-
-
-     */
+   /*public String getName(){return this.name;}
+    public void setName(String name){this.name=name;}
+    public String accNumber(){return this.accNumber;}
+    public void setAccNumber(String accNumber){this.accNumber=accNumber;}
+    public int getMoney(){return this.money;}
+    public void setMoney(int money){this.money=money;}
+    public String getBankName(){return this.bankName;}
+    public void setBankName(String bankName){this.bankName=bankName;}
+    public String getDate(){return this.date;}
+    public void setDate(String date){this.date=date;}
+    public float getInterest(){return this.interest;}
+    public void setInterest(float interest){this.interest=interest;}*/
 
 }
