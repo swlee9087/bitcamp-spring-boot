@@ -1,24 +1,32 @@
 package com.example.demo.bank.service;
 
 import com.example.demo.bank.domain.BankAccountDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Random;
 
 //3
 public class BankAccountServiceImpl implements BankAccountService{
-    private BankAccountDTO bankAccount;
+    @Autowired private BankAccountDTO bankAccount; //instc조합
+    @Autowired private BankAccountDTO[] bankAccounts;
+
+   /*public BankAccountServiceImpl(){
+        bankAccount=new BankAccountDTO(); //위로 안올리는 이유 이해! 초기화/레퍼런스/정형화
+
+    }*/
 
     @Override
     public void createAccount(BankAccountDTO bank) { //이름 입력시 계좌 생성
         bankAccount=new BankAccountDTO();
+        Random random=new Random();
+        for(int i=0; i<12; i++){
+            int randomNumber= random.nextInt(10000);
+            int randomNumber2=random.nextInt(10000);
+            int randomNumber3=random.nextInt(10000);
+            System.out.println("Account Number : "+randomNumber+"-"+randomNumber2+"-"+randomNumber3);
+        }
 
-        String randomNumber = "";
-        Random random=new Random(12);
-        int upperbound = 9999;
-        int int_random= random.nextInt(upperbound);
-        for(int i=0;i<=9;i++)
-            System.out.println(random.nextInt()+random.nextInt()+random.nextInt());
-
+        String randomNumber = " ";
         bankAccount.setAccNumber(randomNumber);
         bankAccount.setName(bank.getName());
 
@@ -38,8 +46,8 @@ public class BankAccountServiceImpl implements BankAccountService{
 
     @Override
     public int withdraw(BankAccountDTO bank) { //이름 금액 계번 입력후 출금후 잔액 확인
-        int drawMoney=bankAccount.getMoney();
-        bankAccount.setMoney(bank.getMoney() - drawMoney);
+
+        bankAccount.setMoney(bank.getMoney() - bank.getMoney());
         return bankAccount.getMoney();
     }
 

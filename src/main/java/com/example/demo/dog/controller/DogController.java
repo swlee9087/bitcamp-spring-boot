@@ -3,31 +3,39 @@ package com.example.demo.dog.controller;
 import com.example.demo.dog.domain.DogDTO;
 import com.example.demo.dog.service.DogService;
 import com.example.demo.dog.service.DogServiceImpl;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.Scanner;
-
-public class DogController {
-    private Scanner scanner;
-    private DogService dogService;
-    private DogDTO dog;
+//@Controller
+//@NoArgsConstructor//덕분에 생성자를 안써도 ref로 연결됨.
+public class DogController{
+    private  DogService dogService;
 
     public DogController(){
-        this.dogService = new DogServiceImpl();
-        this.dog=new DogDTO();
-        this.scanner=new Scanner(System.in);
+        dogService=new DogServiceImpl();
     }
-    public void main(){
-        System.out.println("name?");
-        dog.setName(scanner.next()); //Dog class에 저장. --> obj 본다/지향한다.
-        System.out.println("color");
-        dog.setColor(scanner.next());//
-        System.out.println("breed");
-        dog.setBreed(scanner.next());
-        System.out.println("hungry");
-        dog.setHungry(scanner.next());
-        //String ~ = scanner.next(); --> DogMain에 저장. --> 본체귀속. 객체지향x.
-
-
+    public void addDog(DogDTO dog){
+        dogs.add(dog);
     }
 
+    public void showDogs(){
+        System.out.println(dogs);
+    }
+
+    public String barking(String bark) {
+        return dogService.barking(bark);
+    }
+
+
+    public String fetching(String target) {
+        return dogService.fetching(target);
+    }
+
+
+    public String waggingTail() {
+        return dogService.waggingTail();
+    }
 }

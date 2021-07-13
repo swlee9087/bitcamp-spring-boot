@@ -10,11 +10,11 @@ public class DogDTO {
     private String name;
     private String color;
     private String breed;
-    private String hungry;
+
     //primitive String
     @Override
     public String toString(){
-        return String.format("dog name %s, color %s, breed %s, hunger %s.", name, color, breed, hungry);
+        return String.format("dog name %s, color %s, breed %s, barks like ", name, color, breed);
     }
 
 

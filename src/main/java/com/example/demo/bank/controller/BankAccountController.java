@@ -20,7 +20,7 @@ public class BankAccountController {
         System.out.println("name?");
         bankAccount.setName(scanner.next()); //create random num string for acctnum
         while (true) {
-            System.out.print("\n[menu] 0.check balance 1.deposit 2.withdraw 3.close account 4.logout");//create options to depo or withdr or close
+            System.out.print("\n[menu] 0.check balance 1.deposit 2.withdraw 3.close account ");//create options to depo or withdr or close
             switch (scanner.next()) {
                 case "0":
                     System.out.println("check balance?");
@@ -41,7 +41,7 @@ public class BankAccountController {
                     bankAccount.getName();
                     break;
                 case"4":
-                    System.out.println("log out?");
+                    System.out.println("log out?"); break;
             }
         }
 

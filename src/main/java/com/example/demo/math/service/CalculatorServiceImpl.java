@@ -5,6 +5,7 @@ package com.example.demo.math.service;
 import com.example.demo.math.domain.CalculatorDTO;
 
 public class CalculatorServiceImpl implements CalculatorService {
+
     @Override
     public int add(CalculatorDTO calculator) { //calc = atom값
         return calculator.getNum1() + calculator.getNum2();
