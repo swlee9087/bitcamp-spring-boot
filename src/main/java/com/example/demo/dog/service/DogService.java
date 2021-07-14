@@ -6,9 +6,13 @@ package com.example.demo.dog.service;
 
 import com.example.demo.dog.domain.DogDTO;
 
+import java.util.List;
+
 public interface DogService { //자바클래스 밖의 함수. intfc type.
     //v 기능만. 그래서 public.
     void add(DogDTO dog);
+    int count();
+    List<?> show(); //와일드카드! 보여줘!
     String barking(String bark); //fn
     String fetching(String target); //fn
     String waggingTail(); //supplier

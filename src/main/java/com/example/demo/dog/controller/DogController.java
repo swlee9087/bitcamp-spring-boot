@@ -17,12 +17,14 @@ public class DogController{
     public DogController(){
         dogService=new DogServiceImpl();
     }
-    public void addDog(DogDTO dog){
-        dogs.add(dog);
+    public void add(DogDTO dog){
+        dogService.add(dog);
     }
+    public int count(){return dogService.count();}
 
-    public void showDogs(){
-        System.out.println(dogs);
+    public void show(){
+        System.out.println("number of dogs : "+dogService.count());
+        System.out.println(dogService.show());
     }
 
     public String barking(String bark) {

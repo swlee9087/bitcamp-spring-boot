@@ -2,17 +2,20 @@ package com.example.demo.bank.domain;
 
 import lombok.Data;
 
+import java.util.Random;
+
 //1
 @Data
 
 public class BankAccountDTO {
     private String name; //"name"=invisible instcVar공간
-    private String accNumber; //info factor
+    private String accountNumber; //info factor
     private int money;
     private int balance;
     private String date; //
     private float interest;
     public static final String BANK_NAME = "BeatBank"; //assign val in classVar to init as constant(syntax)
+
     //var and constant defined
     //"="classVar "x="instanceVar
 

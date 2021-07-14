@@ -1,30 +1,13 @@
 package com.example.demo.bicycle.domain;
 
-//state (current gear, current pedal cadence, current speed) and
+import lombok.Data;
 
+//state (current gear, current pedal cadence, current speed) and
+@Data
 public class BicycleDTO {
     private String gear;
     private String pedalCadence;
     private String speed;
-
-    public void setGear(String gear){
-        this.gear=gear;
-    }
-    public String getGear(){
-        return this.gear;
-    }
-    public void setPedalCadence(String pedalCadence){
-        this.pedalCadence=pedalCadence;
-    }
-    public String getPedalCadence(){
-        return this.pedalCadence;
-    }
-    public void setSpeed(String speed){
-        this.speed=speed;
-    }
-    public String getSpeed(){
-        return this.speed;
-    } //get or set, order is irrelevant
 
     @Override
     public String toString() {

@@ -7,43 +7,52 @@ import com.example.demo.bank.service.BankAccountServiceImpl;
 import java.util.Scanner;
 //4
 public class BankAccountController {
-    private Scanner scanner;
-    private BankAccountService bankAccountService;
-    private BankAccountDTO bankAccount;
+    private BankAccountServiceImpl bankAccountService;
+    public BankAccountController(){
+        bankAccountService = new BankAccountServiceImpl();
+    }
+    public void main(){
+        Scanner scanner=new Scanner(System.in);
+        BankAccountDTO account=null;
+        while(true){
+            System.out.println("\n[menu] 0=exit | 1=createAcct | 2=AccList | 3=AccNumList");
+            switch(scanner.next()){
+                case"0": return;
+                case"1":
+                    account=new BankAccountDTO();
+                    System.out.println("Name : ");
+                    account.setName(scanner.next());
+                    bankAccountService.createAccount(account);break;
+                case"2":
+                    System.out.println("Accounts created : "+bankAccountService.count());
+                    System.out.println(bankAccountService.findAll()); break;
+                case"3":
+                    for(String s: bankAccountService.findAllAccountNumbers()){
+                        System.out.println(s + "\n");
+                    }break;
+                    //System.out.println(bankAccountService.findAll()); break;
+            }
+        }
+
+    }
+}
+
+/*    private BankAccountService bankAccountService;
 
     public BankAccountController(){
         this.bankAccountService=new BankAccountServiceImpl();
-        this.bankAccount=new BankAccountDTO();
-        this.scanner=new Scanner(System.in);
+
     }
-    public void main() {
-        System.out.println("name?");
-        bankAccount.setName(scanner.next()); //create random num string for acctnum
-        while (true) {
-            System.out.print("\n[menu] 0.check balance 1.deposit 2.withdraw 3.close account ");//create options to depo or withdr or close
-            switch (scanner.next()) {
-                case "0":
-                    System.out.println("check balance?");
-                    bankAccount.getMoney();
-                    break;
-                case "1":
-                    System.out.println("deposit?");
-                    bankAccount.setMoney(scanner.nextInt());
-                    System.out.println("balance : " + bankAccount.getMoney());
-                    break;
-                case "2":
-                    System.out.println("withdraw?");
-                    bankAccount.setMoney(scanner.nextInt());
-                    System.out.println("balance : " + bankAccount.getMoney());
-                    break;
-                case "3":
-                    System.out.println("close account?");
-                    bankAccount.getName();
-                    break;
-                case"4":
-                    System.out.println("log out?"); break;
-            }
-        }
+    public void add(BankAccountDTO bankAccount){
+        bankAccountService.add(bankAccount);
+    }
+    public void show(){
+        System.out.println("Account Name : ");
+    }
+    public String createAccNumber(BankAccountDTO bankAccountDTO){
+
+    }
+}*/
 
 
         /*System.out.println("계좌번호 : ");
@@ -61,6 +70,3 @@ public class BankAccountController {
         park.withdraw(2000);
         yoon.checkMyBalance();
         park.checkMyBalance();*/
-
-    }
-    }

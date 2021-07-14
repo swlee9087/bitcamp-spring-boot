@@ -7,7 +7,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public interface UtilService {
-    LocalDate today();
-    LocalTime currentTime();
+    LocalDate getLocalDate();
+    LocalTime getLocalTime();
     String todayAndCurrentTime();
+    String randomNumbers(int digits, boolean allowZeroValue);
 }

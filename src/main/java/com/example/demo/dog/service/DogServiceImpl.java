@@ -5,15 +5,31 @@ import com.example.demo.dog.domain.DogDTO;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DogServiceImpl implements DogService{
     //ctrl+insert, ctrl+i, enter
-    private final DogDTO dog; //error시 @ReqArgsCons
-    private ArrayList<DogDTO> dogs;
+    private final DogDTO dog; //class. 단수라 generic 필요없음.
+    private List<DogDTO> dogs;
+    //^복수라 generic필요함. syntax(List)=interface type. <DogDTO>=generic. DogDTO=generic type. dogs=InstVar
 
+    public DogServiceImpl(){
+        dog=new DogDTO();
+        dogs=new ArrayList<>();
+    }
     @Override
     public void add(DogDTO dog) {
         dogs.add(dog);
+    }
+
+    @Override
+    public int count() {
+        return dogs.size();
+    }
+
+    @Override
+    public List<?> show() { //보여주라고! 와일드카드!
+        return dogs;
     }
 
     @Override

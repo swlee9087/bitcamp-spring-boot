@@ -1,35 +1,51 @@
 package com.example.demo.bank.service;
 
 import com.example.demo.bank.domain.BankAccountDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-
+import com.example.demo.util.service.UtilService;
+import com.example.demo.util.service.UtilServiceImpl;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 //3
 public class BankAccountServiceImpl implements BankAccountService{
-    @Autowired private BankAccountDTO bankAccount; //instc조합
-    @Autowired private BankAccountDTO[] bankAccounts;
+     private BankAccountDTO bankAccount; //instc조합
+     private List<BankAccountDTO> bankAccounts;
 
-   /*public BankAccountServiceImpl(){
-        bankAccount=new BankAccountDTO(); //위로 안올리는 이유 이해! 초기화/레퍼런스/정형화
+    @Override
+    public int count() { //Array
+        return bankAccounts.size();
+    }
 
-    }*/
+    @Override
+    public List<?> findAll() {
+        return bankAccounts;
+    }
+
+    public BankAccountServiceImpl(){
+         bankAccount=new BankAccountDTO(); //위로 안올리는 이유 이해! 초기화/레퍼런스/정형화
+         bankAccounts=new ArrayList<>();
+    }
 
     @Override
     public void createAccount(BankAccountDTO bank) { //이름 입력시 계좌 생성
-        bankAccount=new BankAccountDTO();
-        Random random=new Random();
-        for(int i=0; i<12; i++){
-            int randomNumber= random.nextInt(10000);
-            int randomNumber2=random.nextInt(10000);
-            int randomNumber3=random.nextInt(10000);
-            System.out.println("Account Number : "+randomNumber+"-"+randomNumber2+"-"+randomNumber3);
+        UtilService utilService=new UtilServiceImpl();
+        String accountNumber= utilService.randomNumbers(4,false) +" - "+
+                utilService.randomNumbers(4,true)+" - "+
+                utilService.randomNumbers(4,true);
+        System.out.println("==================================");
+        System.out.println("Your Account Number : "+accountNumber);
+        bank.setAccountNumber(accountNumber);
+        bankAccounts.add(bank);
+    }
+
+    @Override
+    public String[] findAllAccountNumbers() {
+        String[] accountNumbers =new String[count()]; //"count()" position defines how much data to show
+        for(int i=0; i< count(); i++){
+            accountNumbers[i]=bankAccounts.get(i).getAccountNumber();
         }
-
-        String randomNumber = " ";
-        bankAccount.setAccNumber(randomNumber);
-        bankAccount.setName(bank.getName());
-
+        return accountNumbers;
     }
 
     @Override
@@ -40,23 +56,20 @@ public class BankAccountServiceImpl implements BankAccountService{
     @Override
     public int deposit(BankAccountDTO bank) { //이름 금액 계번 입력후 입금후 잔액 확인
         int restMoney=bankAccount.getMoney();
-        bankAccount.setMoney(restMoney + bank.getMoney());
+        bankAccount.setMoney(restMoney + bank.getMoney()); //
         return bankAccount.getMoney();
     }
 
     @Override
     public int withdraw(BankAccountDTO bank) { //이름 금액 계번 입력후 출금후 잔액 확인
-
-        bankAccount.setMoney(bank.getMoney() - bank.getMoney());
-        return bankAccount.getMoney();
+        bankAccount.setBalance(bankAccount.getBalance() - bankAccount.getMoney());
+        return bankAccount.getBalance();
     }
 
     @Override
     public void dropAccount(BankAccountDTO bank) { //이름 계번 입력후 계좌해지
 
     }
-
-
 
      /*int balance =0;
 
