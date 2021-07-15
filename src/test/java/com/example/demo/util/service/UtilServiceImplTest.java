@@ -1,14 +1,19 @@
 package com.example.demo.util.service;
+import com.example.demo.util.service.LambdaUtils;
+
 
 import java.util.Random;
 
-public class UtilServiceImplTest {
+public class UtilServiceImplTest extends LambdaUtils {
     public static void main(String[]args){
+
         String result="";
         for(int i=0; i<4; i++);{ //middle in #digits
             result += (int)(Math.random()*10);
         }
-        System.out.print(result);
+        print.accept(result); //accept=consumer
+
+
 
         /*Random random=new Random();
         for(int i=0; i<1; i++){
@@ -23,6 +28,7 @@ public class UtilServiceImplTest {
         random.nextInt(1000); //inst meth
         //this takes up too much runpower
         */
+
         /*String str= new String();
         char c=' ';
         str="hello";

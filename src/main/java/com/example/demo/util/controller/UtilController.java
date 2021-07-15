@@ -1,16 +1,16 @@
 package com.example.demo.util.controller;
 
+import com.example.demo.util.service.LambdaUtils;
 import com.example.demo.util.service.UtilService;
 import com.example.demo.util.service.UtilServiceImpl;
 
-import java.time.LocalDate;
 
 
-public class UtilController {
+public class UtilController extends LambdaUtils {
     private UtilService utilService = new UtilServiceImpl();
 
     public void todayAndCurrentTime(){
-        System.out.println("Today's date : " + utilService.todayAndCurrentTime());
+        print.accept("Today's date : " + utilService.todayAndCurrentTime());
     }
 
 

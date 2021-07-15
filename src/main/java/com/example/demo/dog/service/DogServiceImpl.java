@@ -1,8 +1,7 @@
 package com.example.demo.dog.service;
 
-import com.example.demo.dog.controller.DogController;
 import com.example.demo.dog.domain.DogDTO;
-import lombok.RequiredArgsConstructor;
+import com.example.demo.util.service.LambdaUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
 public class DogServiceImpl implements DogService{
     //ctrl+insert, ctrl+i, enter
     private final DogDTO dog; //class. 단수라 generic 필요없음.
-    private List<DogDTO> dogs;
+    private final List<DogDTO> dogs;
     //^복수라 generic필요함. syntax(List)=interface type. <DogDTO>=generic. DogDTO=generic type. dogs=InstVar
 
     public DogServiceImpl(){
@@ -46,4 +45,7 @@ public class DogServiceImpl implements DogService{
     public String waggingTail() {
         return "wag tail";
     }
+
+
+
 }

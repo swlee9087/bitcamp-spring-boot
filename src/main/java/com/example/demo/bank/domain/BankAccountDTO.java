@@ -10,14 +10,14 @@ import java.util.Random;
 public class BankAccountDTO {
     private String name; //"name"=invisible instcVar공간
     private String accountNumber; //info factor
-    private int money;
-    private int balance;
+    private String money;
+    private String balance;
     private String date; //
-    private float interest;
+    private String interest;
     public static final String BANK_NAME = "BeatBank"; //assign val in classVar to init as constant(syntax)
 
     //var and constant defined
-    //"="classVar "x="instanceVar
+    //assignment 여부. "="classVar "x="instanceVar
 
    /*public String getName(){return this.name;}
     public void setName(String name){this.name=name;}

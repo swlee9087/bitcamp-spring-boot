@@ -1,25 +1,26 @@
 package com.example.demo.bank.service;
 
 import com.example.demo.bank.domain.BankAccountDTO;
+import com.example.demo.util.service.LambdaUtils;
 import com.example.demo.util.service.UtilService;
 import com.example.demo.util.service.UtilServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 //3
-public class BankAccountServiceImpl implements BankAccountService{
-     private BankAccountDTO bankAccount; //instc조합
-     private List<BankAccountDTO> bankAccounts;
+public class BankAccountServiceImpl extends LambdaUtils implements BankAccountService{
+     private final BankAccountDTO bankAccount; //instc조합
+     private final List<BankAccountDTO> bankAccounts;
+     //final 용도: prevent deletion by GCollectn. finalized. X in DTO. only in interface class.
 
     @Override
-    public int count() { //Array
-        return bankAccounts.size();
+    public String count() { //Array
+        return string.apply(bankAccounts.size());
     }
 
     @Override
-    public List<?> findAll() {
-        return bankAccounts;
+    public String findAll() {
+        return String.valueOf(bankAccounts);
     }
 
     public BankAccountServiceImpl(){
@@ -29,40 +30,41 @@ public class BankAccountServiceImpl implements BankAccountService{
 
     @Override
     public void createAccount(BankAccountDTO bank) { //이름 입력시 계좌 생성
-        UtilService utilService=new UtilServiceImpl();
+        UtilService utilService=new UtilServiceImpl(); //위로 안올리는 이유 이해! 기능 찾기 생략하려고=PROCESS RUNTIME vv.
         String accountNumber= utilService.randomNumbers(4,false) +" - "+
                 utilService.randomNumbers(4,true)+" - "+
                 utilService.randomNumbers(4,true);
-        System.out.println("==================================");
-        System.out.println("Your Account Number : "+accountNumber);
+        print.accept("==================================");
+        print.accept("Your Account Number : "+accountNumber);
         bank.setAccountNumber(accountNumber);
         bankAccounts.add(bank);
     }
 
     @Override
     public String[] findAllAccountNumbers() {
-        String[] accountNumbers =new String[count()]; //"count()" position defines how much data to show
-        for(int i=0; i< count(); i++){
+        int count = strToInt.apply(count());
+        String[] accountNumbers =new String[count]; //"count()" position defines how much data to show
+        for(int i=0; i< count; i++){
             accountNumbers[i]=bankAccounts.get(i).getAccountNumber();
         }
         return accountNumbers;
     }
 
     @Override
-    public int findBalance(BankAccountDTO bank) { //이름 금액 계번 입력후 잔액 확인하면 잔액 보임
+    public String findBalance(BankAccountDTO bank) { //이름 금액 계번 입력후 잔액 확인하면 잔액 보임
         return bankAccount.getMoney();
     }
 
     @Override
-    public int deposit(BankAccountDTO bank) { //이름 금액 계번 입력후 입금후 잔액 확인
-        int restMoney=bankAccount.getMoney();
+    public String deposit(BankAccountDTO bank) { //이름 금액 계번 입력후 입금후 잔액 확인
+        int restMoney= strToInt.apply(bankAccount.getMoney()); //apply fn
         bankAccount.setMoney(restMoney + bank.getMoney()); //
         return bankAccount.getMoney();
     }
 
     @Override
-    public int withdraw(BankAccountDTO bank) { //이름 금액 계번 입력후 출금후 잔액 확인
-        bankAccount.setBalance(bankAccount.getBalance() - bankAccount.getMoney());
+    public String withdraw(BankAccountDTO bank) { //이름 금액 계번 입력후 출금후 잔액 확인
+        //bankAccount.setMoney(bankAccount.getBalance() - bankAccount.getMoney());
         return bankAccount.getBalance();
     }
 

@@ -3,20 +3,21 @@ package com.example.demo.math.controller;
 import com.example.demo.math.domain.CalculatorDTO;
 import com.example.demo.math.service.CalculatorService;
 import com.example.demo.math.service.CalculatorServiceImpl;
+import com.example.demo.util.service.LambdaUtils;
 
 import java.util.Scanner;
 
-public class CalculatorController {
+public class CalculatorController extends LambdaUtils {
     Scanner scanner = new Scanner(System.in);
     CalculatorDTO calculator = new CalculatorDTO(); //자동조회하게
     CalculatorService calculatorService = new CalculatorServiceImpl(); //기능객체 instc 생성
 
     public void calculate() {
-        System.out.println("first int");
+        print.accept("first int : \n");
         calculator.setNum1(scanner.nextInt());
-        System.out.println("연산자");
+        print.accept("operator : \n");
         calculator.setOpcode(scanner.next());
-        System.out.println("second int");
+        print.accept("second int : \n");
         calculator.setNum2(scanner.nextInt());
         //입력값 다 위로
         int result = 0;
@@ -37,19 +38,21 @@ public class CalculatorController {
                 result = calculatorService.remainder(calculator);
                 break;
         }
-        System.out.printf("%d %s %d = %d",
+
+        print.accept(String.format( "%d %s %d = %d",
                 calculator.getNum1(),
                 calculator.getOpcode(),
-                calculator.getNum2(), result);
+                calculator.getNum2(),
+                result)); //String.format to cover all
     }
     public void sequence(){
-        System.out.println("seq start:");
+        print.accept("seq start : ");
         calculator.setNum1(scanner.nextInt());
-        System.out.println("seq end:");
+        print.accept("seq end : ");
         calculator.setNum2(scanner.nextInt());
         int[] arr= calculatorService.sequence(calculator);
         for (int i=0; i<arr.length; i++){
-            System.out.print(arr[i]+"\t");
+            print.accept(arr[i]+"\t");
         }
 
     }

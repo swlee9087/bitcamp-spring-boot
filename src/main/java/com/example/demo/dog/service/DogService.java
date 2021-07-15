@@ -12,10 +12,11 @@ public interface DogService { //자바클래스 밖의 함수. intfc type.
     //v 기능만. 그래서 public.
     void add(DogDTO dog);
     int count();
-    List<?> show(); //와일드카드! 보여줘!
+    List<?> show(); //return type 와일드카드! 보여줘!
     String barking(String bark); //fn
     String fetching(String target); //fn
     String waggingTail(); //supplier
+
     //in out 없는. 기능지원. 속성값이 없는 함수. 추상메소드.
 
 

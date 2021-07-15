@@ -3,6 +3,7 @@ package com.example.demo.bicycle.service;
 //behavior (changing gear, changing pedal cadence, applying brakes)
 
 import com.example.demo.bicycle.domain.BicycleDTO;
+import com.example.demo.util.service.LambdaUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class BicycleServiceImpl implements BicycleService {
 
     private final BicycleDTO bicycle;
-    private List<BicycleDTO> bicycles;
+    private final List<BicycleDTO> bicycles;
 
     public BicycleServiceImpl() { //constructor initialisation
         bicycle=new BicycleDTO();

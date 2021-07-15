@@ -1,14 +1,24 @@
 package com.example.demo.util.service;
 
-import ch.qos.logback.classic.pattern.Util;
 import com.example.demo.util.domain.UtilDTO;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Random;
 
 public class UtilServiceImpl implements UtilService{
-    private UtilDTO util;
+
+    @Override
+    public String randomNumbers(int digits, boolean allowZeroValue) {
+        String first="", result="";
+
+        first += allowZeroValue ? ((int)(Math.random()*1000)) : ((int)(Math.random()*900+100));
+
+        for(int i=0; i<digits-1; i++);{
+            result += (int)(Math.random()*10);
+        }
+        return first + result;
+    }
+
+    private final UtilDTO util;
     public UtilServiceImpl(){
         this.util=new UtilDTO();
     }
@@ -30,25 +40,14 @@ public class UtilServiceImpl implements UtilService{
         return String.format("%s %s", getLocalDate(), getLocalTime());
     }
 
-    @Override
-    public String randomNumbers (int digits, boolean allowZeroValue) {
-        String first="", result="";
-        /*if(allowZeroValue){ //condition "allowZeroValue"
+
+/*if(allowZeroValue){ //condition "allowZeroValue"
             first +=((int)(Math.random()*10));
         }else{
             first +=((int)(Math.random()*9+1));
         }
 
          */
-        first += allowZeroValue ? ((int)(Math.random()*10)) : ((int)(Math.random()*9+1));
-
-        for(int i=0; i<digits; i++);{
-            result += (int)(Math.random()*10);
-        }
-        return first + result;
-    }
-
-
         /*Random random=new Random();
         for(int i=0; i<12; i++){
             int randomNumber = random.nextInt(10000);
