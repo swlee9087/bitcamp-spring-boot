@@ -10,7 +10,7 @@ public class UtilController extends LambdaUtils {
     private UtilService utilService = new UtilServiceImpl();
 
     public void todayAndCurrentTime(){
-        print.accept("Today's date : " + utilService.todayAndCurrentTime());
+        print.accept("\nToday's date : " + utilService.todayAndCurrentTime() + "\n");
     }
 
 

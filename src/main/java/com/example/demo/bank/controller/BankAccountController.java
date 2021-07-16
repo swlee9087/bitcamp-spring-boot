@@ -18,28 +18,37 @@ public class BankAccountController extends LambdaUtils {
         //if not null but new BankAccountDTO() then accnumlist repeats content ln=override
         //hence  here should be null and new BankAccountDTO() separated to each runnable case ln.
         while(true){
-            print.accept("\n[menu] 0=exit | 1=createAcct | 2=AccList | 3=AccNumList | 4=Deposit");
+            print.accept("\n[menu] 0=exit | 1=createAcct | 2=AccNumList | 3=Deposit | 4=Withdraw | 5=Check Account Balance\nEnter : ");
             switch(scanner.next()){
                 case"0": return;
-                case"1":
+                case"1": //create
                     account=new BankAccountDTO(); //account=null ln above is reused as new BankAccountDTO(). runtimeVV
                     print.accept("Name : ");
                     account.setName(scanner.next());
                     bankAccountService.createAccount(account); break;
-                case"3":
+                case"2": //accNumlist
+                    print.accept("\nNumber of Accounts opened : " + string.apply(bankAccountService.count())+"\n");
                     for(String s: bankAccountService.findAllAccountNumbers()){
                         print.accept(s + "\n");
                     }break;
-                case"4":
-                    print.accept("Account Number : ");
+                case"3": //depo
                     account=new BankAccountDTO();
+                    print.accept("\nAccount Number to Deposit : ");
                     account.setAccountNumber(scanner.next());
                     print.accept("Deposit Amount : ");
                     account.setMoney(scanner.next());
-                    print.accept(bankAccountService.findAll()); break;
+                    break;
+                case"4": //withdrawing option
+                    account=new BankAccountDTO();
+                    print.accept("\nAccount Number to Withdraw : ");
+                    account.setAccountNumber(scanner.next());
+                    print.accept("Withdraw Amount : ");
+                    account.setMoney(scanner.next());
+                    break;
+                case"5":  //chkacctbal option
+                    print.accept("Account Number to Check Balance : " +bankAccountService.findBalanceByAccountNumber(scanner.next()));
+                    break;
 
-
-                //System.out.println(bankAccountService.findAll()); break;
             }
         }
 

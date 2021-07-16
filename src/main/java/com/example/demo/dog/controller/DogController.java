@@ -19,8 +19,7 @@ public class DogController extends LambdaUtils {
     public void main(){
         Scanner scanner=new Scanner(System.in);
         while(true){
-            print.accept("\n[menu] 0=end | 1=add | 2=count | 3=list");
-            print.accept("\nEnter : ");
+            print.accept("\n[menu] 0=end | 1=add | 2=list\nEnter : ");
             switch (scanner.next()){
                 case"0": return;
                 case"1": DogDTO dog = new DogDTO(); //Element class should be inside "while"
@@ -34,8 +33,7 @@ public class DogController extends LambdaUtils {
                     dogService.add(dog);break;
                 case"2":
                     print.accept("\nNumber of dogs registered : " + string.apply(dogService.count())+"\n");
-                    break;
-                case"3": List<DogDTO> list=(List<DogDTO>)dogService.show();
+                    List<DogDTO> list=(List<DogDTO>)dogService.show();
                 for(DogDTO d: list){
                     print.accept(d.toString()+"\n");
                 }

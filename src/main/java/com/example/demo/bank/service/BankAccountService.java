@@ -2,6 +2,8 @@ package com.example.demo.bank.service;
 
 import com.example.demo.bank.domain.BankAccountDTO;
 
+import java.util.List;
+
 //2
 /*
 bankName=constant
@@ -17,12 +19,13 @@ public interface BankAccountService {
 
     void createAccount(BankAccountDTO bank); //cons
     String count(); //suppl
-    String findAll();
+    List<? extends BankAccountDTO> findAll();
     String[] findAllAccountNumbers();
-    String findBalance(BankAccountDTO bank); //fn
-    String deposit(BankAccountDTO bank);
-    String withdraw(BankAccountDTO bank);
-    void dropAccount(BankAccountDTO bank);
+    BankAccountDTO findAccountByAccountNumber (String bankAccountNumber);
+    String findBalanceByAccountNumber (String bankAccountNumber); //fn
+    void deposit (BankAccountDTO bank);
+    void withdraw (BankAccountDTO bank);
+    void dropAccount (BankAccountDTO bank);
 
 
 }
