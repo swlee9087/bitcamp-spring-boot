@@ -29,7 +29,12 @@ public class HomeController extends LambdaUtils {
                 case "4": new BicycleController().main(); break;
                 case "5": new BankAccountController().main(); break;
                 case "6": new HimartController().main(); break;
-                    /*BankAccountDTO bankAccount = new BankAccountDTO();
+
+                        }
+                    }
+    }
+}
+ /*BankAccountDTO bankAccount = new BankAccountDTO();
                     System.out.println("Do you have an account with us?");
                     //if()
                     System.out.println("name?");
@@ -59,7 +64,3 @@ public class HomeController extends LambdaUtils {
                                 System.out.println("log out?");
                                 break;
                             //;break;*/
-                        }
-                    }
-    }
-}

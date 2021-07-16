@@ -7,8 +7,7 @@ package com.example.demo.himart.domain;
 import lombok.Data;
 
 public class PhoneApp {
-    @Data
-    public static class Phone {
+    @Data public class Phone {
         protected String kind, company, call;
 
         @Override //alt insert
@@ -21,10 +20,9 @@ public class PhoneApp {
         }
     }
 
-     class Cellphone extends Phone { //GSttr로 가져온다는
+    public class Cellphone extends Phone { //GSttr로 가져온다는
         protected boolean portable;
-        protected String move;
-        //diff type = sep ln
+        protected String move;         //diff type = sep ln
 
         @Override
         public String toString() {
@@ -37,13 +35,13 @@ public class PhoneApp {
         }
     }
 
-    class IPhone extends Cellphone{
+    public class IPhone extends Cellphone{
         public final static String BRAND = "iPhone";
         protected String internet;
 
         @Override
         public String toString() {
-            return "IPhone{" +
+            return "Smahon{" +
                     "kind='" + BRAND + '\'' +
                     ", call='" + call + '\'' +
                     ", move='" + move + '\'' +
@@ -52,13 +50,13 @@ public class PhoneApp {
         }
     }
 
-    class GalaxyNote extends IPhone {
+    public class GalaxyNote extends IPhone {
         public final static String BRAND = "GalaxyPhone"; //override brand name
         protected String pencil;
 
         @Override
         public String toString() {
-            return "GalaxyNote{" +
+            return "Smahon{" +
                     "kind='" + BRAND + '\'' +
                     ", call='" + call + '\'' +
                     ", move='" + move + '\'' +

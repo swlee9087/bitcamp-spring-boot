@@ -1,6 +1,5 @@
 package com.example.demo.himart.controller;
 
-import com.example.demo.bank.domain.BankAccountDTO;
 import com.example.demo.himart.domain.PhoneApp;
 import com.example.demo.himart.service.HimartService;
 import com.example.demo.himart.service.HimartServiceImpl;
@@ -49,72 +48,40 @@ public class HimartController extends LambdaUtils {
                     phone.setCall("scram");
                     phone.setCompany("LG");
                     phone.setKind("home phone");
+                    print.accept(phone.toString());
                     break;
                 case"2": //cellph
                     cellPhone = app.new CellPhone();
-                    cellPhone.setKind();
-                    cellPhone.setCompany();
-                    cellPhone.setCall();
-                    cellPhone.setMove();
-
+                    cellPhone.setKind("Razr");
+                    cellPhone.setCompany("Motorola");
+                    cellPhone.setCall("Will call you back later");
+                    cellPhone.setMove("On the move");
+                    cellPhone.isPortable();
+                    print.accept(cellPhone.toString());
                     break;
                 case"3"://iph
                     iPhone=app.new IPhone();
                     iPhone.setKind(PhoneApp.IPhone.BRAND);
-                    iPhone.setCompany();
-                    iPhone.setCall();
-                    iPhone.setInternet();
+                    iPhone.setCompany("Apple");
+                    iPhone.setCall("Calling from iPhone");
+                    iPhone.setInternet("Logging into Google");
+                    iPhone.setMove("On the move");
                     iPhone.isPortable();
+                    print.accept(iPhone.toString());
                     break;
                 case"4": //galno
                     galaxyNote=app.new GalaxyNote();
-                    galaxyNote.setKind();
-                    galaxyNote.setCompany();
-                    galaxyNote.setCall();
-                    galaxyNote.setInternet();
+                    galaxyNote.setKind(PhoneApp.GalaxyNote.BRAND);
+                    galaxyNote.setCompany("Samsung");
+                    galaxyNote.setCall("Calling from GalaxyNote");
+                    galaxyNote.setInternet("Logging into Naver");
+                    galaxyNote.setMove("On the move");
                     galaxyNote.isPortable();
-                    galaxyNote.setPencil();
+                    galaxyNote.setPencil("Using Note Pencil");
+                    print.accept(galaxyNote.toString());
                     break;
 
             }
         }
     }
-
-    public HimartService getHimartService() {
-        return himartService;
-    }
 }
-
-/*    private BankAccountService bankAccountService;
-
-    public BankAccountController(){
-        this.bankAccountService=new BankAccountServiceImpl();
-
-    }
-    public void add(BankAccountDTO bankAccount){
-        bankAccountService.add(bankAccount);
-    }
-    public void show(){
-        System.out.println("Account Name : ");
-    }
-    public String createAccNumber(BankAccountDTO bankAccountDTO){
-
-    }
-}*/
-
-
-        /*System.out.println("계좌번호 : ");
-        bankAccountDTO.setAccNumber(scanner.next());
-        System.out.println("주민번호 : ");
-        bankAccountDTO.setName(scanner.next());
-        System.out.println(bankAccountDTO.toString());
-
-        /*BankAccount yoon = new BankAccount("12-34-56","990990-9090990",10000);
-        BankAccount park = new BankAccount("33-55-09","770088-5959007",10000);
-
-        yoon.deposit(5000);
-        park.deposit(3000);
-        yoon.withdraw(2000);
-        park.withdraw(2000);
-        yoon.checkMyBalance();
-        park.checkMyBalance();*/
