@@ -20,7 +20,8 @@ public class PhoneApp {
         }
     }
 
-    public class Cellphone extends Phone { //GSttr로 가져온다는
+    @Data
+    public class MobilePhone extends Phone { //GSttr로 가져온다는
         protected boolean portable;
         protected String move;         //diff type = sep ln
 
@@ -34,8 +35,8 @@ public class PhoneApp {
                     '}';
         }
     }
-
-    public class IPhone extends Cellphone{
+@Data
+    public class IPhone extends MobilePhone{
         public final static String BRAND = "iPhone";
         protected String internet;
 
@@ -49,7 +50,7 @@ public class PhoneApp {
                     '}';
         }
     }
-
+@Data
     public class GalaxyNote extends IPhone {
         public final static String BRAND = "GalaxyPhone"; //override brand name
         protected String pencil;

@@ -35,7 +35,7 @@ public class HimartController extends LambdaUtils {
     public void phoneMain(Scanner scanner){
         PhoneApp app=new PhoneApp();
         PhoneApp.Phone phone = null;
-        PhoneApp.CellPhone cellPhone=null;
+        PhoneApp.MobilePhone mobilePhone=null;
         PhoneApp.IPhone iPhone=null;
         PhoneApp.GalaxyNote galaxyNote=null;        
 
@@ -45,19 +45,19 @@ public class HimartController extends LambdaUtils {
                 case"0":return;
                 case"1": //homeph
                     phone = app.new Phone();
-                    phone.setCall("scram");
+                    phone.setCall("call rejected");
                     phone.setCompany("LG");
                     phone.setKind("home phone");
                     print.accept(phone.toString());
                     break;
                 case"2": //cellph
-                    cellPhone = app.new CellPhone();
-                    cellPhone.setKind("Razr");
-                    cellPhone.setCompany("Motorola");
-                    cellPhone.setCall("Will call you back later");
-                    cellPhone.setMove("On the move");
-                    cellPhone.isPortable();
-                    print.accept(cellPhone.toString());
+                    mobilePhone=app.new MobilePhone();
+                    mobilePhone.setKind("Razr");
+                    mobilePhone.setCompany("Motorola");
+                    mobilePhone.setCall("Will call you back in 2006");
+                    mobilePhone.setMove("Outdated");
+                    mobilePhone.isPortable();
+                    print.accept(mobilePhone.toString());
                     break;
                 case"3"://iph
                     iPhone=app.new IPhone();
